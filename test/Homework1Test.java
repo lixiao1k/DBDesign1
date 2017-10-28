@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -16,11 +17,29 @@ public class Homework1Test {
     }
     @Test
     public void testxls(){
-        try {
-            homework1.readAllocationFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+        ArrayList<String[]> datas = homework1.readAllocationFile();
+        for(int rownum = 0; rownum<datas.size();rownum++){
+            String [] dataOfRow = datas.get(rownum);
+            for(int i = 0;i<7;i++){
+                System.out.print(dataOfRow[i]+" ");
+            }
+            System.out.println();
         }
+    }
+
+    @Test
+    public void testInsert(){
+        homework1.insertStudentData();
+    }
+
+    @Test
+    public void testDormitory(){
+        homework1.insertDormitoryData();
+    }
+
+    @Test
+    public void testAccommodation(){
+        homework1.insertAccommodationData();
     }
 
 }
